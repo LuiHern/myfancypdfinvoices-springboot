@@ -3,10 +3,7 @@ package com.lucodes.myfancypdfinvoices.springboot.web;
 import com.lucodes.myfancypdfinvoices.springboot.dto.InvoiceDto;
 import com.lucodes.myfancypdfinvoices.springboot.model.Invoice;
 import com.lucodes.myfancypdfinvoices.springboot.service.InvoiceService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,8 +18,13 @@ public class InvoicesController {
     }
 
     @GetMapping("/invoices")
-    public List<Invoice> invoices() {
+    public Iterable<Invoice> invoices() {
         return invoiceService.findAll();
+    }
+
+    @GetMapping("/invoices/user/{userId}")
+    public Iterable<Invoice> findByUserId(@PathVariable String userId) {
+        return invoiceService.findByUserId(userId);
     }
 
     @PostMapping("/invoices")
