@@ -4,7 +4,7 @@ cdn:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: 'jdbc:postgresql://localhost/fancypdf'
+    url: 'jdbc:postgresql://localhost/fancypdfinvoice'
     username: ${POSTGRES_CONTAINER_USERNAME}
     password: ${POSTGRES_CONTAINER_PASSWORD}
 
