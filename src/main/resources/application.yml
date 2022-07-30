@@ -3,10 +3,10 @@ cdn:
 
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: 'jdbc:h2:mem:'
-    username: sa
-    password: sa
+    driver-class-name: org.postgresql.Driver
+    url: 'jdbc:postgresql:'
+    username: ${POSTGRES_CONTAINER_USERNAME}
+    password: ${POSTGRES_CONTAINER_PASSWORD}
 
 logging:
   level:

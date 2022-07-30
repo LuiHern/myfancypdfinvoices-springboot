@@ -7,7 +7,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.UUID;
 
-@Table("INVOICES")
+@Table("invoices")
 public class Invoice {
     @Id
     private String id;
