@@ -2,6 +2,7 @@ package com.lucodes.myfancypdfinvoices.springboot.service;
 
 import com.lucodes.myfancypdfinvoices.springboot.model.Invoice;
 import com.lucodes.myfancypdfinvoices.springboot.repository.InvoiceRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Service
+@Slf4j
 public class InvoiceService {
 
     private final InvoiceRepository invoiceRepository;
@@ -23,12 +25,12 @@ public class InvoiceService {
 
     @PostConstruct
     public void init() {
-        System.out.println("Fetching PDF Template from S3...");
+        log.info("Fetching PDF Template from S3...");
     }
 
     @PreDestroy
     public void shutdown() {
-        System.out.println("Deleting downloaded templates...");
+        log.info("Deleting downloaded templates...");
     }
 
     @Transactional
@@ -38,7 +40,7 @@ public class InvoiceService {
 
     @Transactional
     public Invoice create(String userId, Integer amount) {
-        System.out.println("Is a database transaction open? = " + TransactionSynchronizationManager.isActualTransactionActive());
+        log.info("Is a database transaction open? = " + TransactionSynchronizationManager.isActualTransactionActive());
         String generatedPdfUrl = cdnUrl + "/images/default/sample.pdf";
 
         Invoice invoice = new Invoice();
